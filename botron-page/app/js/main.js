@@ -20,12 +20,11 @@ requirejs.config({
 
 
 define(["backbone", "text!/app/templates/temp.html"/*, "../lib/aui/js/aui", "../lib/aui/js/aui-experimental"*/], function (Backbone, temp) {
-  debugger;
   var AppView = Backbone.View.extend({
     // el - stands for element. Every view has a element associate in with HTML
     //      content will be rendered.
     template: _.template(temp),
-    el: '#container',
+    el: '#content',
     // It's the first function called when this view it's instantiated.
     initialize: function () {
       this.render();

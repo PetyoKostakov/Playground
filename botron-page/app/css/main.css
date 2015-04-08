@@ -1,0 +1,123 @@
+/* DEV HELP */
+.bt-split-cont > div {
+
+}
+/*************/
+
+/* GLOBAL */
+ul {
+  list-style-type: none;
+}
+
+/*************/
+
+/* SCROLL */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+/*************/
+
+/* SPLIT CONTAINER */
+
+.bt-split-cont {
+  background-color: #fff;
+  float: left;
+  width: 100%
+}
+
+.bt-split-cont > div {
+  float: left;
+}
+
+.bt-split-cont > ul.bt-split-cont-nav {
+  position: fixed;
+  padding-left: 0; /* I don't know why this is happening */
+  width: 18%;
+  height: 95%;
+  border-right: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+.bt-split-cont > .bt-split-cont-page {
+  width: 79%;
+  margin-left: 20%;
+  padding-top: 15px;
+
+}
+
+/*************/
+
+/* Navigation */
+.bt-split-cont-nav-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 5%;
+}
+/*************/
+
+/* LIST ITEM */
+.bt-split-cont-nav > .bt-list-el {
+  width: 85%;
+  min-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom:1px solid #ccc;
+  padding: 5px;
+}
+
+.bt-split-cont-nav > .bt-list-el > a > img {
+  position: relative;
+  top: 3px;
+  padding-right: 2px;
+}
+
+.bt-split-cont-nav > .bt-list-el > a > p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+
+/****************/
+
+/* PAGE HEADER */
+
+.aui-page-header {
+  margin-bottom: 20px;
+}
+
+/****************/
+
+/* PAGE MODULES */
+
+.bt-page-content > .bt-module > h3.bt-module-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.bt-module > ul {
+  padding-left: 20px;
+}
+
+.bt-module > ul > li.bt-module-list-item {
+  margin: 5px 0;
+}
+
+.bt-module-list-item.details-module > strong > .bt-module-list-key {
+  color: #777;
+}
+
+/****************/
