@@ -1,3 +1,4 @@
+
 ;
 // tipsy, facebook style tooltips for jquery
 // version 1.0.0a
@@ -6,7 +7,7 @@
 //
 // Modified by Atlassian
 // https://github.com/atlassian/tipsy
-
+var jQuery = require(['jquery']);
 (function($) {
     
     function maybeCall(thing, ctx) {

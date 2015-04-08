@@ -19,7 +19,7 @@ requirejs.config({
 });
 
 
-define(["backbone", "text!/app/templates/temp.html"], function (Backbone, temp) {
+define(["backbone", "text!/app/templates/temp.html"/*, "../lib/aui/js/aui", "../lib/aui/js/aui-experimental"*/], function (Backbone, temp) {
   debugger;
   var AppView = Backbone.View.extend({
     // el - stands for element. Every view has a element associate in with HTML
