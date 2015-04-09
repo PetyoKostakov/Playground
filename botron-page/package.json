@@ -1,0 +1,16 @@
+{
+  "name": "botron-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Petyo Kostakov",
+  "license": "MIT",
+  "dependencies": {
+    "body": "^5.0.0",
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3"
+  }
+}

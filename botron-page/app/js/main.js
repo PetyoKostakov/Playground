@@ -2,11 +2,12 @@ requirejs.config({
   paths: {
     //tries to load jQuery from Google's CDN first and falls back
     //to load locally
-    "jquery": ["../../bower_components/jquery/jquery",
+    "jquery": ["../bower_components/jquery/jquery",
                 "libs/jquery/jquery"],
-    "underscore": "../../bower_components/underscore/underscore",
-    "backbone": "../../bower_components/backbone/backbone",
-    "text": "../../bower_components/requirejs-text/text"
+    "underscore": "../bower_components/underscore/underscore",
+    "backbone": "../bower_components/backbone/backbone",
+    "text": "../bower_components/requirejs-text/text",
+    "backbone.paginator": "../bower_components/backbone.paginator/lib/backbone.paginator"
   },
   shim: {
     "backbone": {
@@ -19,18 +20,50 @@ requirejs.config({
 });
 
 
-define(["backbone", "text!/app/templates/temp.html"/*, "../lib/aui/js/aui", "../lib/aui/js/aui-experimental"*/], function (Backbone, temp) {
+define(["backbone", "text!/templates/temp.html", "backbone.paginator"],
+function (Backbone, temp, PageableCollection) {
+
+  //var Issues = Backbone.PageableCollection.extend({
+  var Issues = Backbone.Collection.extend({
+    //url: "https://api.github.com/search/issues",
+    url: "/issues",
+
+    // Initial pagination states
+    // state: {
+    //   pageSize: 15,
+    //   sortKey: "updated",
+    //   order: 1
+    // },
+    //
+    // // You can remap the query parameters from `state` keys from
+    // // the default to those your server supports
+    // queryParams: {
+    //   totalPages: null,
+    //   totalRecords: null,
+    //   sortKey: "sort",
+    //   //q: "state:closed repo:jashkenas/backbone"
+    // },
+    //
+    // parseState: function (resp, queryParams, state, options) {
+    //   return {totalRecords: resp.total_count};
+    // },
+    //
+    // parseRecords: function (resp, options) {
+    //   return resp.items;
+    // }
+
+  });
+
+  issues = new Issues().fetch().then(function (data) {
+    debugger;
+  });
+
   var AppView = Backbone.View.extend({
-    // el - stands for element. Every view has a element associate in with HTML
-    //      content will be rendered.
     template: _.template(temp),
     el: '#content',
-    // It's the first function called when this view it's instantiated.
     initialize: function () {
       this.render();
     },
-    // $el - it's a cached jQuery object (el), in which you can use jQuery functions
-    //       to push content. Like the Hello World in this case.
     render: function () {
       this.$el.html(this.template());
       return this;
