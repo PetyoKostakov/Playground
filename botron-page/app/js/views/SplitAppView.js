@@ -6,7 +6,9 @@ function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
       "click .bt-split-cont-nav-sort": "toggleSort"
     },
     initialize: function () {
-      this.listenTo(this.collection, 'change', this.rerender);
+      this.listenTo(this.collection, 'change', this.rerender);//TODO do not work for some reason
+      this.listenTo(this.collection, 'sync', this.rerender);
+      
       this.render();
     },
     childViews: {},
@@ -22,6 +24,7 @@ function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
       return this;
     },
     rerender: function () {
+      debugger;
       this.el.innerHTML = '';
       this.render();
 

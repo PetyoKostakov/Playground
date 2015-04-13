@@ -6,7 +6,7 @@
 <% }; %>
         
 <% _.times(pageCount, function(n) { %>
-    <span><%- n + 1 %></span>
+    <span class="pagination-nav-number <%- currentPage === n + 1 ? 'bold' : '' %>"><%- n + 1 %></span>
 <% }); %>
 <!-- if current page === pageCount -->
 

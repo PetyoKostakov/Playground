@@ -73,7 +73,11 @@ ul {
   cursor: pointer;
 }
 
-.pagination-nav-container > span:hover {
+.pagination-nav-container > .pagination-nav-number.bold {
+  font-weight: bold;
+}
+
+.pagination-nav-container > .pagination-nav-number:hover {
   text-decoration: underline  ;
 }
   /*************/
