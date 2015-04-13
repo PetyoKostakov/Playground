@@ -1,6 +1,6 @@
 var express = require('express'),
-    bodyParser = require('body-parser');
-    app = express()
+    bodyParser = require('body-parser'),
+    app = express(),
     fs = require('fs'),
     issues = {};
 
@@ -17,10 +17,34 @@ fs.readFile(file, 'utf8', function (err, data) {
   issues = JSON.parse(data);
 });
 
-app.get('/issues', function (req, res) {
-  console.log('app.get');
+function getIssuesByPage(pageSize, pageNum) {
+  sliceEnd = pageSize * pageNum,
+  issuesTable = issues.issueTable.table,
+  issuesPaginated = issuesTable.slice(sliceEnd - pageSize, sliceEnd);
+  
+  return issuesPaginated;
+};
 
-  res.json(issues.issueTable.table);
+app.get('/issues', function (req, res) {
+  console.log('app.get - /issues');
+  var pageSize = req.query.per_page,
+      pageNum = req.query.pageNumber,
+      issuesPaginated;
+  
+  if (pageNum && pageSize) {
+    issuesPaginated = getIssuesByPage(pageSize, pageNum);
+  }
+
+  res.json(issuesPaginated);
+});
+
+app.get('/splitApp', function (req, res) {
+  console.log('app.get - /issues');
+  var pageSize = req.query.per_page,
+      pageNum = req.query.pageNumber;
+  
+  res.json({total: issues.issueTable.table.length, issues: getIssuesByPage(pageSize, pageNum)});
+  
 });
 
 app.get('/issues/:id', function (req, res) {

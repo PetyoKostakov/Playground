@@ -20,54 +20,33 @@ requirejs.config({
 });
 
 
-define(["backbone", "text!/templates/temp.html", "backbone.paginator"],
-function (Backbone, temp, PageableCollection) {
+define(["backbone", "js/collections/IssuesCollection.js", "js/views/SplitAppView.js"],
+function (Backbone, Issues, SplitAppView) {
+  var pageSize = 15;
+  var pageNum = 1;
 
-  //var Issues = Backbone.PageableCollection.extend({
-  var Issues = Backbone.Collection.extend({
-    //url: "https://api.github.com/search/issues",
-    url: "/issues",
-
-    // Initial pagination states
-    // state: {
-    //   pageSize: 15,
-    //   sortKey: "updated",
-    //   order: 1
-    // },
-    //
-    // // You can remap the query parameters from `state` keys from
-    // // the default to those your server supports
-    // queryParams: {
-    //   totalPages: null,
-    //   totalRecords: null,
-    //   sortKey: "sort",
-    //   //q: "state:closed repo:jashkenas/backbone"
-    // },
-    //
-    // parseState: function (resp, queryParams, state, options) {
-    //   return {totalRecords: resp.total_count};
-    // },
-    //
-    // parseRecords: function (resp, options) {
-    //   return resp.items;
-    // }
-
-  });
-
-  issues = new Issues().fetch().then(function (data) {
-    debugger;
-  });
-
-  var AppView = Backbone.View.extend({
-    template: _.template(temp),
-    el: '#content',
-    initialize: function () {
-      this.render();
-    },
-    render: function () {
-      this.$el.html(this.template());
-      return this;
-    }
-  });
-  var appView = new AppView();
+  $.ajax( {
+    url: "/splitApp",
+    data: { pageNumber: pageNum, per_page: pageSize }
+  })
+    .done(function (data) {
+      issues = new Issues(data.issues, {
+        pageSize: pageSize,
+        currentPage: pageNum
+      });
+      
+      splitApp = new SplitAppView({
+        el: '#content',
+        collection: issues
+      });
+    })
+    .fail(function () {
+      alert("error while GET split app data");
+    });
+  
+  //issues.fetch().then(function (data) {
+  //  console.log(data);
+  //  var appView = new SplitAppView({ collection: issues });
+  //  //TODO initialize split app view
+  //});
 });
