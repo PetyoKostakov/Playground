@@ -7,7 +7,8 @@ function (Backbone, paginationTmpl) {
     events: {
       "click .next-page": "nextPage",
       "click .prev-page": "prevPage",
-      "click .pagination-nav-number": "_navigateToPage"
+      "click .pagination-nav-number": "_navigateToPage",
+      "click .refresh-icon": "refreshData"
     },
     template: _.template(paginationTmpl),
     render: function () {
@@ -22,20 +23,16 @@ function (Backbone, paginationTmpl) {
       });
     },
     nextPage: function () {
-      var collection = this.collection; 
-      debugger;
-      collection.getNextPage().done(function (data) {
-        collection.fetch();
-      });
+      this.collection.getNextPage();
     },
     prevPage: function () {
-      debugger;
-      this.collection.getPreviousPage().done(function (data) {
-        debugger;
-      });
+      this.collection.getPreviousPage();
     },
     _navigateToPage: function (e) {
       this.collection.getPage(parseInt(e.target.innerText));
+    },
+    refreshData: function () {
+      this.collection.fetch();
     }
   });
   

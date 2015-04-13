@@ -16,7 +16,7 @@ function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
       //TODO refactor use template for jenerating all these
       var template = this.$el.html(this.template()),
         $navContUlEl = this.$('.bt-split-cont-nav > .bt-split-cont-nav-ul'),
-        $paginationCont = this.$('.pagination-nav-container');
+        $paginationCont = this.$('.bt-split-cont-nav-pagination');
 
       this.addIssues($navContUlEl);
       this.childViews.paginationView = new Pagination({el: $paginationCont, collection: this.collection, parent: this});
@@ -24,7 +24,6 @@ function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
       return this;
     },
     rerender: function () {
-      debugger;
       this.el.innerHTML = '';
       this.render();
 

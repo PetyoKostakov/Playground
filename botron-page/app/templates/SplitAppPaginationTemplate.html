@@ -1,17 +1,13 @@
 <!--if furrent page ===  1 -->
-
-<% console.log(pageCount); %>
-<% if (currentPage !== 1) { %>
-    <span class="prev-page">&lt;&lt;</span>
-<% }; %>
-        
-<% _.times(pageCount, function(n) { %>
-    <span class="pagination-nav-number <%- currentPage === n + 1 ? 'bold' : '' %>"><%- n + 1 %></span>
-<% }); %>
-<!-- if current page === pageCount -->
-
-
-<% console.log(pageCount); %>
-<% if (currentPage !== pageCount) { %>
-<span class="next-page">&gt;&gt;</span>
-<% }; %>
+<span class="aui-icon aui-icon-small aui-iconfont-build refresh-icon"></span>
+<div class="pagination-nav-container">
+    <% if (currentPage !== 1) { %>
+        <span class="prev-page">&lt;&lt;</span>
+    <% }; %>
+    <% _.times(pageCount, function(n) { %>
+        <span class="pagination-nav-number <%- currentPage === n + 1 ? 'bold' : '' %>"><%- n + 1 %></span>
+    <% }); %>
+    <% if (currentPage !== pageCount) { %>
+    <span class="next-page">&gt;&gt;</span>
+    <% }; %>
+</div>
