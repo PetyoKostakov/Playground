@@ -22,18 +22,23 @@ requirejs.config({
 
 define(["backbone", "js/collections/IssuesCollection.js", "js/views/SplitAppView.js"],
 function (Backbone, Issues, SplitAppView) {
-  var pageSize = 15;
-  var pageNum = 1;
+  var pageSize = 15,
+      pageNum = 1;
 
   $.ajax( {
     url: "/splitApp",
     data: { pageNumber: pageNum, per_page: pageSize }
   })
     .done(function (data) {
+      //TODO remove gloval objects
       issues = new Issues(data.issues, {
         pageSize: pageSize,
         currentPage: pageNum
       });
+      // needed for pagination
+      issues.state.currentPage = pageNum; // encapsulation???
+      issues.state.totalRecords = data.total;
+      issues.state.pageSize = pageSize;
       
       splitApp = new SplitAppView({
         el: '#content',
@@ -43,10 +48,4 @@ function (Backbone, Issues, SplitAppView) {
     .fail(function () {
       alert("error while GET split app data");
     });
-  
-  //issues.fetch().then(function (data) {
-  //  console.log(data);
-  //  var appView = new SplitAppView({ collection: issues });
-  //  //TODO initialize split app view
-  //});
 });

@@ -2,11 +2,7 @@ define(["backbone", "backbone.paginator"],
 function (Backbone,PageableCollection) {
   var Issues = Backbone.PageableCollection.extend({
     url: "/issues",
-    queryParams: {
-      currentPage: 15,
-      pageSize: 15,
-      pageNumber: 1
-    },
+
     sortAttribute: "summary",
     sortDirection: 1,
     comparator: function(a, b) {

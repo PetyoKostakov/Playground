@@ -69,7 +69,7 @@ ul {
 .pagination-nav-container {
   float: right;
   padding-top: 6px;
-  padding-left: 6px;
+  padding-right: 6px;
   cursor: pointer;
 }
 

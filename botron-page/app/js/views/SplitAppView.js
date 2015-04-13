@@ -6,17 +6,18 @@ function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
       "click .bt-split-cont-nav-sort": "toggleSort"
     },
     initialize: function () {
-      this.childViews.paginationView = new Pagination({collection: this.collection});
+      this.listenTo(this.collection, 'change', this.rerender);
       this.render();
     },
     childViews: {},
     render: function () {
+      //TODO refactor use template for jenerating all these
       var template = this.$el.html(this.template()),
         $navContUlEl = this.$('.bt-split-cont-nav > .bt-split-cont-nav-ul'),
-        $paginationCont = this.$('.bt-split-cont-nav-pagination');
+        $paginationCont = this.$('.pagination-nav-container');
 
       this.addIssues($navContUlEl);
-      //$paginationCont.innerHTML(Pagination)
+      this.childViews.paginationView = new Pagination({el: $paginationCont, collection: this.collection, parent: this});
 
       return this;
     },

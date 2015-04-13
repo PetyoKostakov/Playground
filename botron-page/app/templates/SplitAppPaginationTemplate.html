@@ -1,9 +1,17 @@
-<span class="aui-icon aui-icon-small aui-iconfont-build refresh-icon"></span>
-<div class="pagination-nav-container">
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-    <span>5</span>
-    <span>Next &gt;&gt;</span></a>
-</div>
+<!--if furrent page ===  1 -->
+
+<% console.log(pageCount); %>
+<% if (currentPage !== 1) { %>
+    <span class="prev-page">&lt;&lt;</span>
+<% }; %>
+        
+<% _.times(pageCount, function(n) { %>
+    <span><%- n + 1 %></span>
+<% }); %>
+<!-- if current page === pageCount -->
+
+
+<% console.log(pageCount); %>
+<% if (currentPage !== pageCount) { %>
+<span class="next-page">&gt;&gt;</span>
+<% }; %>
