@@ -1,0 +1,79 @@
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-image">
+                <span class="aui-avatar aui-avatar-large aui-avatar">
+                    <span class="aui-avatar-inner">
+                        <img alt="Atlassian logo" src="img/projectavatar.png">
+                    </span>
+                </span>
+        </div>
+        <div class="aui-page-header-main">
+            <ol class="aui-nav aui-nav-breadcrumbs" resolved="">
+                <li><a href="#">A Test Project</a></li>
+                <li><%- key %></li>
+            </ol>
+            <h1><%- type.description %></h1>
+        </div>
+        <div class="aui-page-header-actions">
+            <span class="bt-page-header-from-to">1 of 50</span>
+            <div class="aui-buttons">
+                <button class="prev-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-left"></span></button>
+                <button class="next-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-right"></span></button>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="bt-page-content">
+    <div class="bt-module module-description">
+        <h3 class="bt-module-title">Details</h3>
+        <ul>
+            <li class="bt-module-list-item details-module">
+                <strong><span class="bt-module-list-key">Type: </span></strong>
+                <% if (type.name === "Bug") { %>
+                    <span class="bt-module-list-value"><img src="img/bug.png" alt="bug flag"><%- type.name %></span>
+                <% } %>
+            </li>
+            <li class="bt-module-list-item details-module">
+                <strong><span class="bt-module-list-key">Priority: </span></strong>
+                <% if (type.priority === "Critical") { %>
+                    <span class="bt-module-list-value"><img src="img/major.png" alt="bug flag"><%- type.priority %></span>
+                <% } %>
+            </li>
+            <li class="bt-module-list-item details-module">
+                <strong><span class="bt-module-list-key">Status: </span></strong>
+                <% if (status === "Open") { %>
+                    <span class="bt-module-list-value"><span class="aui-lozenge aui-lozenge-complete">OPEN</span></span>
+                <% } else if (status === "Resolved") { %>
+                <span class="bt-module-list-value"><span class="aui-lozenge aui-lozenge-success">RESOLVED</span></span>
+                <% } %>
+            </li>
+        </ul>
+    </div>
+    <div class="bt-module">
+        <h3 class="bt-module-title">Description</h3>
+        <ul>
+            <li class="bt-module-list-item">
+                <strong><span class="bt-module-list-key">Pre condition: </span></strong>
+                <span class="bt-module-list-value"><%= type.details.preCondition %></span>
+            </li>
+            <li class="bt-module-list-item">
+                <strong><span class="bt-module-list-key">Steps to reproduce: </span></strong>
+            <span class="bt-module-list-value">
+              <ol>
+                  <% _.each(type.details.steps, function (step) { %>
+                    <li><%- step %></li>
+                  <% }); %>
+              </ol>
+            </span>
+            </li>
+            <li class="bt-module-list-item">
+                <strong><span class="bt-module-list-key">Actual result: </span></strong>
+                <span class="bt-module-list-value"><%- type.details.actualResult %></span>
+            </li>
+            <li class="bt-module-list-item">
+                <strong><span class="bt-module-list-key">Expected result: </span></strong>
+                <span class="bt-module-list-value"><%- type.details.expectedResult %></span>
+            </li>
+        </ul>
+    </div>
+</section>

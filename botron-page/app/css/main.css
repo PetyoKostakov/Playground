@@ -122,8 +122,24 @@ ul {
     margin-bottom: 20px;
   }
   
+  .bt-page-header-from-to {
+    position: relative;
+    top: 6px;
+  }
+
   /****************/
   /* PAGE CONTENT MODULES */
+.bt-page-content {
+  border-bottom: 1px solid;
+}
+
+.bt-page-content > .bt-module {
+  margin-bottom: 30px;
+  border-top: 1px solid;
+}
+
+.bt-page-content > .bt-module.module-description {
+}
 
 .bt-page-content > .bt-module > h3.bt-module-title {
   font-weight: bold;

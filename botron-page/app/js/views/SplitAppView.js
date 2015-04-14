@@ -1,5 +1,5 @@
-define(["backbone", "js/collections/IssuesCollection.js", "js/views/SplitAppIssueView.js", "text!/templates/SplitAppTemplate.html", "js/views/SplitAppPaginationView.js", "text!/templates/temp.html"],
-function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
+define(["backbone", "js/collections/IssuesCollection.js", "js/views/SplitAppIssueView.js", "js/views/SplitAppPageView.js", "text!/templates/SplitAppTemplate.html", "js/views/SplitAppPaginationView.js", "text!/templates/temp.html"],
+function (Backbone, Issues, IssueView, Page, splitAppTmpt, Pagination, temp) {
   var SplitAppView = Backbone.View.extend({
     template: _.template(splitAppTmpt),
     events: {
@@ -16,10 +16,12 @@ function (Backbone, Issues, IssueView, splitAppTmpt, Pagination, temp) {
       //TODO refactor use template for jenerating all these
       var template = this.$el.html(this.template()),
         $navContUlEl = this.$('.bt-split-cont-nav > .bt-split-cont-nav-ul'),
-        $paginationCont = this.$('.bt-split-cont-nav-pagination');
+        $paginationCont = this.$('.bt-split-cont-nav-pagination'),
+        $pageCont = this.$('.bt-split-cont-page');
 
       this.addIssues($navContUlEl);
       this.childViews.paginationView = new Pagination({el: $paginationCont, collection: this.collection, parent: this});
+      this.childViews.pageView = new Page({el: $pageCont, model: this.collection.models[0], parent: this})
 
       return this;
     },
