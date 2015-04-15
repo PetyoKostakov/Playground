@@ -15,7 +15,7 @@
             <h1><%- type.description %></h1>
         </div>
         <div class="aui-page-header-actions">
-            <span class="bt-page-header-from-to">1 of 50</span>
+            <span class="bt-page-header-from-to"><%- position %> of <%- totalRecords %></span>
             <div class="aui-buttons">
                 <button class="prev-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-left"></span></button>
                 <button class="next-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-right"></span></button>
@@ -41,14 +41,18 @@
             </li>
             <li class="bt-module-list-item details-module">
                 <strong><span class="bt-module-list-key">Status: </span></strong>
+                <% console.log(status) %>
                 <% if (status === "Open") { %>
                     <span class="bt-module-list-value"><span class="aui-lozenge aui-lozenge-complete">OPEN</span></span>
                 <% } else if (status === "Resolved") { %>
-                <span class="bt-module-list-value"><span class="aui-lozenge aui-lozenge-success">RESOLVED</span></span>
+                    <span class="bt-module-list-value"><span class="aui-lozenge aui-lozenge-success">RESOLVED</span></span>
+                <% } else if (status === "Reopened") { %>
+                    <span class="bt-module-list-value"><span class="aui-lozenge aui-lozenge-moved">REOPENED</span></span>
                 <% } %>
             </li>
         </ul>
     </div>
+    <% if (type.details) { %>
     <div class="bt-module">
         <h3 class="bt-module-title">Description</h3>
         <ul>
@@ -58,13 +62,13 @@
             </li>
             <li class="bt-module-list-item">
                 <strong><span class="bt-module-list-key">Steps to reproduce: </span></strong>
-            <span class="bt-module-list-value">
-              <ol>
-                  <% _.each(type.details.steps, function (step) { %>
-                    <li><%- step %></li>
-                  <% }); %>
-              </ol>
-            </span>
+                <span class="bt-module-list-value">
+                  <ol>
+                      <% _.each(type.details.steps, function (step) { %>
+                        <li><%- step %></li>
+                      <% }); %>
+                  </ol>
+                </span>
             </li>
             <li class="bt-module-list-item">
                 <strong><span class="bt-module-list-key">Actual result: </span></strong>
@@ -76,4 +80,5 @@
             </li>
         </ul>
     </div>
+    <% } %>
 </section>

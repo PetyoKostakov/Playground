@@ -9,6 +9,13 @@ ul {
   list-style-type: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #ebf2f9;
+}
 /*************/
 
 /* SPLIT CONTAINER */
@@ -96,13 +103,13 @@ ul {
   padding: 5px;
 }
 
-.bt-split-cont-nav-ul > .bt-list-el > a > img {
+.bt-split-cont-nav-ul > .bt-list-el > img {
   position: relative;
   top: 3px;
   padding-right: 2px;
 }
 
-.bt-split-cont-nav-ul > .bt-list-el > a > p {
+.bt-split-cont-nav-ul > .bt-list-el > p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
