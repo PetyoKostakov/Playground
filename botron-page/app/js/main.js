@@ -23,7 +23,8 @@ requirejs.config({
 define(["backbone", "js/collections/IssuesCollection.js", "js/views/SplitAppView.js"],
 function (Backbone, Issues, SplitAppView) {
   var pageSize = 15,
-      pageNum = 1;
+      pageNum = 1,
+      selectedElAtIndex = 0;
 
   $.ajax( {
     url: "/splitApp",
@@ -39,6 +40,7 @@ function (Backbone, Issues, SplitAppView) {
       issues.state.currentPage = pageNum; // encapsulation???
       issues.state.totalRecords = data.total;
       issues.state.pageSize = pageSize;
+      issues.state.selectedElAtIndex = selectedElAtIndex;
       
       splitApp = new SplitAppView({
         el: '#content',

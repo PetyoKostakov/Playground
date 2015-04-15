@@ -15,6 +15,7 @@ function (Backbone, Issues, IssueView, Page, splitAppTmpt, Pagination, temp) {
       this.curruntSelected = e.currentTarget;
 
       $(e.currentTarget ).addClass("selected");
+      model.collection.state.selectedElAtIndex = model.collection.indexOf(model);
       this.renderPageView(model);
     } ,
     initialize: function () {
@@ -62,6 +63,11 @@ function (Backbone, Issues, IssueView, Page, splitAppTmpt, Pagination, temp) {
     },
     // RENDERING CHILDS
     renderPageView: function (model) {
+      if (this.curruntSelected) {
+        $(this.curruntSelected).removeClass('selected');
+        this.curruntSelected = $("#" + model.get("id")).addClass('selected');
+      }
+      
       this.childViews.pageView.model = model;
       this.childViews.pageView.render();
     },
