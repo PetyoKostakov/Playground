@@ -17,8 +17,16 @@
         <div class="aui-page-header-actions">
             <span class="bt-page-header-from-to"><%- position %> of <%- totalRecords %></span>
             <div class="aui-buttons">
-                <button class="prev-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-left"></span></button>
-                <button class="next-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-right"></span></button>
+                <% if(position - 1 === issuesFrom) { %>
+                    <button class="prev-item ninja"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-left"></span></button>
+                <% } else { %>
+                    <button class="prev-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-left"></span></button>
+                <% } %>
+                <% if(position === issuesTo) { %>
+                    <button class="next-item ninja"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-right"></span></button>
+                <% } else { %>
+                    <button class="next-item"><span class="aui-icon aui-icon-small aui-iconfont-devtools-arrow-right"></span></button>
+                <% } %>
             </div>
         </div>
     </div>

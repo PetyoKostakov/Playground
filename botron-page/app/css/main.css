@@ -13,6 +13,11 @@ ul {
   cursor: pointer;
 }
 
+.ninja {
+  visibility: hidden;
+  color: black;
+}
+
 .selected {
   background-color: #ebf2f9;
 }

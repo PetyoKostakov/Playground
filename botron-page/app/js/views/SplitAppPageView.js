@@ -13,15 +13,14 @@ function (Backbone, pageTemplate) {
             var collection = this.model.collection,
                 totalRecords = collection.state.totalRecords,
                 modelIndex = collection.indexOf(this.model),
-                selectedAtIndex = collection.state.currentPage;
+                currentPage = collection.state.currentPage,
+                pageSize = collection.state.pageSize;
 
-            debugger;
-            //this.model.set("position", modelIndex + 1);
-            //this.model.set("totalRecords", collection.state.totalRecords);
-            
             var obj = {
-                position: ((selectedAtIndex - 1) * 10) + modelIndex + 1,
-                totalRecords: totalRecords
+                position: ((currentPage - 1) * pageSize) + modelIndex + 1,
+                totalRecords: totalRecords,
+                issuesFrom: ((currentPage - 1) * pageSize),
+                issuesTo: ((currentPage - 1) * pageSize) + pageSize
             };
             //this.collection.state.currentPosition(obj.position);
 
