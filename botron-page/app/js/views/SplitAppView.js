@@ -28,6 +28,7 @@ function (Backbone, Issues, IssueView, Page, splitAppTmpt, Pagination, temp) {
       pageView: {}
     },
     render: function () {
+      console.info("SplitApp.rerender()");
       //TODO refactor use template for generating all these
       this.$el.html(this.template());
 
@@ -37,6 +38,7 @@ function (Backbone, Issues, IssueView, Page, splitAppTmpt, Pagination, temp) {
       this.renderIssues($navContUlEl);
       this.childViews.paginationView = new Pagination({el: $paginationCont, collection: this.collection, parent: this});
       this.childViews.pageView = new Page({el: this.$('.bt-split-cont-page'), model: this.collection.models[0]});
+      this.curruntSelected = this.collection.models[0].view.$el.find("li").first().addClass("selected");
       this.childViews.pageView.parent = this;
 
       return this;
@@ -60,7 +62,6 @@ function (Backbone, Issues, IssueView, Page, splitAppTmpt, Pagination, temp) {
     },
     // RENDERING CHILDS
     renderPageView: function (model) {
-      model.view.$el.addClass("selected");
       this.childViews.pageView.model = model;
       this.childViews.pageView.render();
     },
