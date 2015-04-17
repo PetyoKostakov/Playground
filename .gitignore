@@ -2,3 +2,6 @@
 botron-page/app/bower_components
 botron-page/node_modules
 botron-page/.idea/
+**bower_components
+**node_modules
+**/*npm-debug.log
