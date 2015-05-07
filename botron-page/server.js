@@ -27,6 +27,12 @@ function getIssuesByPage(pageSize, pageNum) {
 
 app.get('/issues', function (req, res) {
   console.log('app.get - /issues');
+
+  res.json(issues.issueTable.table);
+});
+
+/*app.get('/issues', function (req, res) {
+  console.log('app.get - /issues');
   
   var pageSize = req.query.per_page,
       pageNum = req.query.page,
@@ -37,7 +43,7 @@ app.get('/issues', function (req, res) {
   }
 
   res.json(issuesPaginated);
-});
+});*/
 
 app.get('/splitApp', function (req, res) {
   console.log('app.get - /issues');

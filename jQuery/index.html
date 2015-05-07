@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
+</head>
+<body>
+  <button id="show-header">Show Header</button>
+  <button id="show-link">Show Link</button>
+  <button id="show-paragraph">Show P</button>
+  <button id="toggle-button">Toggle content</button>
+  <div id="content">
+  </div>
+  <script>
+      $('#show-header').on('click', function () {
+        $('#content').html("<h1>This is header</h1>");
+      });
+
+      $('#show-link').on('click', function () {
+        $('#content').html('<a href="#">This is href</a>');
+      });
+
+      $('#show-paragraph').on('click', function () {
+        $('#content').html("<p>This is paragraph</p>");
+      });
+
+      $('#toggle-button').on('click', function () {
+        $('#content').toggle("slow");
+      });
+
+      myToggleJQuery = function ($el) {
+        var display = $el.css("display");
+
+        if (display === "none") {
+          $el.css("display", "initial");
+        } else {
+          $el.css("display", "none");
+        }
+      }
+
+      myToggle = function (el) {
+        var display = el.style.display;
+
+        if (display === "none") {
+          el.style.display = "initial";
+        } else {
+          el.style.display = "none";
+        }
+      }
+
+      myJQuery = function(selector, contenxt) {
+        var el = document.querySelector(selector);
+        el.toggle = function() {
+          myToggle(el);
+        };
+
+        return el;
+      }
+  </script>
+</body>
+</html>

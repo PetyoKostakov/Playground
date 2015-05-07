@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- 1. Load platform support before any code that touches the DOM. -->
+  <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <!-- 2. Load the component using an HTML Import -->
+  <link rel="import" href="elements/my-element.html">
+  <link rel="import" href="elements/proto-element.html">
+  <link rel="import" href="elements/ready-element.html">
+  <link rel="import" href="elements/name-tag.html">
+  <link rel="import" href="elements/fav-color.html">
+  <link rel="import" href="elements/age-slider.html">
+  <link rel="import" href="elements/color-picker.html">
+  <link rel="import" href="elements/pk-example.html">
+  <link rel="import" href="elements/test-constructor.html">
+
+</head>
+<body>
+  <!-- 3. Declare the element by its tag. -->
+  <my-element></my-element>
+  <hr>
+  <proto-element></proto-element>
+  <hr>
+  <ready-element ></ready-element>
+  <hr>
+  <name-tag></name-tag>
+  <hr>
+  <fav-color></fav-color>
+  <hr>
+  <age-slider></age-slider>
+  <hr>
+  <color-picker owner="Scott" color="blue"></color-picker>
+  <hr>
+  <pk-example age="30"><h3>My Component</h3></pk-example>
+</body>
+</html>

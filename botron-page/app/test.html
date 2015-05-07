@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        div {
+            border: 1px solid;
+        }
+    </style>
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/issues"
+            }).done(function(data) {
+                console.log(data);
+                data.forEach(function(issue) {
+                    $("#content").append("<div><h3>" + issue.key + "</h3><p>" + issue.status + "</p></div>");
+                });
+            }).fail(function(error) {
+                console.log(error);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="content"></div>
+</body>
+</html>
